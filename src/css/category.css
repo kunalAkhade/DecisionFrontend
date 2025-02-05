@@ -1,0 +1,121 @@
+/* General Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Category List Section (Grid Layout) */
+.category-list {
+    width: 100%;
+    max-width: 1200px;
+    padding: 30px;
+    box-sizing: border-box;
+
+}
+
+.category-item input {
+    height: 30px;
+    border-radius: 2px;
+    margin: 5px;
+    padding-inline: 5px;
+    font-size: 15px;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+    /* Responsive grid */
+    gap: 20px;
+    
+}
+
+/* Category Item Style */
+.category-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+    /* Fixed height to maintain uniform item size */
+}
+
+.category-item:hover {
+    background-color: #e9ecef;
+    transform: translateY(-5px);
+    /* Slight hover effect */
+}
+
+.category-item h3 {
+    font-size: 1.5rem;
+    color: #555;
+    margin: 0;
+    flex-grow: 1;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.98);
+    /* Slight shrink when clicked */
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+    .category-list {
+        padding: 20px;
+        width: 95%;
+    }
+
+    .category-item h3 {
+        font-size: 1.2rem;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-item {
+        height: auto;
+        /* Allow height to adjust on very small screens */
+    }
+}

@@ -19,11 +19,12 @@ export default function PrivateComponent({ children }) {
             },
           }
         );
-
+        console.log(response);
         if (response?.data?.username) {
           setValid(true);
         } else {
           setValid(false);
+          localStorage.removeItem("token");
         }
       } catch (e) {
         console.log(e);

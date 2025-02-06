@@ -52,7 +52,7 @@ const initialTasks = [
 function TaskList() {
   const [tasks, setTasks] = useState([]);
   const [expandedTaskId, setExpandedTaskId] = useState(null);
-  const { token } = useContext(AppContext);
+  const { token, setToken } = useContext(AppContext);
   const [searchInput, setSearchInput] = useState("");
   const [filterTasks, setFilterTasks] = useState([]);
   const [signal, setSignal] = useState(false);

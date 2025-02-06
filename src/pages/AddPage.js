@@ -4,7 +4,7 @@ import "../css/addpage.css";
 import axios from "axios";
 
 function AddPage() {
-  const { token } = useContext(AppContext);
+  const { token, setToken } = useContext(AppContext);
   const [categories, setCategories] = useState([]);
   const [selectedOptionCategory, setSelectedOptionCategory] = useState("");
   const [selectedOptionPriority, setSelectedOptionPriority] = useState(0);

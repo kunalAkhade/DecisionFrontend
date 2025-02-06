@@ -5,7 +5,7 @@ import { AppContext } from "../Auth/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 const CategoryList = () => {
-  const { token } = useContext(AppContext);
+  const { token, setToken } = useContext(AppContext);
   const [categories, setCategories] = useState([]);
   const Navigate = useNavigate();
   const [newCategory, setNewCategory] = useState("");
@@ -60,6 +60,22 @@ const CategoryList = () => {
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.delete(
+        `${process.env.REACT_APP_API_URL}/api/Category/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      fetchCategories();
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <div className="category-list">
       <div className="categories">
@@ -69,13 +85,19 @@ const CategoryList = () => {
           <button onClick={handleSubmit}>Create +</button>
         </div>
         {categories.map((category) => (
-          <div
-            onClick={() => Navigate(`/tasklistbycategory/${category.id}`)}
-            key={category.id}
-            className="category-item"
-          >
+          <div key={category.id} className="category-item">
             <h3>{category.categoryName}</h3>
-            <button>View All Tasks</button>
+            <button
+              onClick={() => Navigate(`/tasklistbycategory/${category.id}`)}
+            >
+              View All Tasks
+            </button>
+            <button
+              className="delete-button"
+              onClick={() => handleDelete(category.id)}
+            >
+              Delete
+            </button>
           </div>
         ))}
       </div>

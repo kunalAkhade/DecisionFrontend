@@ -47,6 +47,10 @@ h2 {
     
 }
 
+.delete-button{
+    background-color: rgb(245, 105, 105);
+}
+
 /* Category Item Style */
 .category-item {
     background-color: #f9f9f9;

@@ -14,6 +14,8 @@ function AuthProvider({ children }) {
     }
   }, [token]); // Runs when `token` changes
 
+  console.log("In Auth Provider");
+
   return (
     <AppContext.Provider value={{ token, setToken }}>
       {children}

@@ -9,6 +9,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { setToken } = useContext(AppContext);
+  const [showErr, setShow] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -34,6 +35,12 @@ const LoginPage = () => {
         localStorage.setItem("token", response.data.token);
         setToken(response.data.token);
         navigate("/");
+      } else {
+        setError(response.data?.message);
+        setShow(true);
+        setTimeout(() => {
+          setShow(false);
+        }, 5000);
       }
     } catch (e) {
       console.log(e);
@@ -44,7 +51,7 @@ const LoginPage = () => {
     <div className="auth-container">
       <div className="auth-form">
         <h2>Login</h2>
-        {error && <p className="error">{error}</p>}
+        {error && showErr ? <p className="error">{error}</p> : <></>}
         <form onSubmit={handleSubmit}>
           <div className="input-group">
             <label htmlFor="email">Username:</label>
